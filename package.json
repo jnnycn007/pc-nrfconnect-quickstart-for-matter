@@ -1,0 +1,57 @@
+{
+    "name": "pc-nrfconnect-quickstart-for-matter",
+    "version": "1.0.0",
+    "description": "Get started with a new Nordic Semiconductor Matter device",
+    "displayName": "Quick Start for Matter",
+    "homepage": "https://github.com/NordicSemiconductor/pc-nrfconnect-quickstart-for-matter",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/NordicSemiconductor/pc-nrfconnect-quickstart-for-matter.git"
+    },
+    "author": "Nordic Semiconductor ASA",
+    "license": "SEE LICENSE IN LICENSE",
+    "engines": {
+        "nrfconnect": ">=5.2.0"
+    },
+    "main": "dist/bundle.js",
+    "nrfConnectForDesktop": {
+        "supportedDevices": [
+            "PCA10090",
+            "PCA10153"
+        ],
+        "html": "dist/index.html",
+        "nrfutil": {
+            "device": [
+                "2.10.2"
+            ]
+        }
+    },
+    "files": [
+        "dist/",
+        "LICENSE",
+        "resources/*",
+        "Changelog.md"
+    ],
+    "scripts": {
+        "watch": "run-p --silent --continue-on-error watch:*",
+        "watch:build": "run-esbuild --watch",
+        "watch:types": "tsc --noEmit --pretty --watch --preserveWatchOutput",
+        "build:dev": "run-esbuild",
+        "build:prod": "run-esbuild --prod",
+        "test": "jest --passWithNoTests",
+        "check": "run-p --silent --continue-on-error --print-label check:*",
+        "check:app": "check-app-properties",
+        "check:lint": "eslint --color .",
+        "check:types": "check-for-typescript tsc --noEmit --pretty",
+        "check:license": "nrfconnect-license check",
+        "nordic-publish": "node ./dist/nordic-publish.js",
+        "prepare": "husky install"
+    },
+    "eslintConfig": {
+        "extends": "./node_modules/@nordicsemiconductor/pc-nrfconnect-shared/config/eslintrc"
+    },
+    "prettier": "@nordicsemiconductor/pc-nrfconnect-shared/config/prettier.config.js",
+    "devDependencies": {
+        "@nordicsemiconductor/pc-nrfconnect-shared": "^210.0.0"
+    }
+}
