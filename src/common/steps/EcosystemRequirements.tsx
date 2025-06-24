@@ -5,20 +5,11 @@
  */
 
 import React from 'react';
-import {
-    logger,
-} from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import { RadioSelect } from '../listSelect/RadioSelect';
 import { useAppDispatch, useAppSelector } from '../../app/store';
-import { getChoiceUnsafely } from '../../features/device/deviceSlice';
 import { Back } from '../Back';
 import Main from '../Main';
 import { Next } from '../Next';
-import {
-    Choice,
-    setChoice,
-} from '../../features/device/deviceSlice';
 import { getSelectedEcosystem } from './SelectEcosystem';
 
 // TODO: Make these images part of the ecosystem data structure and replace with ecosystem specific images

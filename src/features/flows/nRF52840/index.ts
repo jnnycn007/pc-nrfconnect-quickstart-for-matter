@@ -14,7 +14,9 @@ import Program from '../../../common/steps/program';
 import Rename from '../../../common/steps/Rename';
 import SelectEcosystem from '../../../common/steps/SelectEcosystem';
 import EcosystemRequirements from '../../../common/steps/EcosystemRequirements';
+import Pairing from '../../../common/steps/Pairing';
 import { Choice } from '../../device/deviceSlice';
+import path from 'path';
 
 const infoConfig = {
     title: 'Versatile single-board development kit',
@@ -101,6 +103,20 @@ const ecosystemsConfig = [
         name: 'SmartThings',
         description: 'Work with SmartThings',
         link: 'https://www.samsung.com/uk/smartthings/app/'
+    },
+];
+
+const lockFactoryDataImagePath = path.resolve(__dirname, '../../../resources/devices/images/lock_factory_data.png');
+const lightBulbFactoryDataImagePath = path.resolve(__dirname, '../../../resources/devices/images/light_bulb_factory_data.png');
+
+const pairingConfig = [
+    {
+        name: 'Matter Door Lock',
+        qrCodePng: lockFactoryDataImagePath,
+    },
+    {
+        name: 'Matter Light Bulb',
+        qrCodePng: lightBulbFactoryDataImagePath,
     },
 ];
 
@@ -230,6 +246,7 @@ export default {
         Verify(verifyConfig),
         SelectEcosystem(ecosystemsConfig),
         EcosystemRequirements(),
+        Pairing(),
         Evaluate(evaluateConfig),
         Learn(learnConfig),
         Develop(developConfig),
