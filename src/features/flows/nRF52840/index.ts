@@ -7,7 +7,6 @@
 import Verify from '../../../common/steps/5xFamilyVerify';
 import Apps from '../../../common/steps/Apps';
 import Develop from '../../../common/steps/develop';
-import Evaluate from '../../../common/steps/Evaluate';
 import Info from '../../../common/steps/Info';
 import Learn from '../../../common/steps/Learn';
 import Program from '../../../common/steps/program';
@@ -29,7 +28,7 @@ const programConfig = [
     {
         name: 'Matter Door Lock',
         type: 'jlink',
-        description: 'WIP',
+        description: 'This door lock sample demonstrates the usage of the Matter application layer to build a door lock device with one basic bolt. You can use this sample as a reference for creating your application. This device works as a Matter accessory device, meaning it can be paired and controlled remotely over a Matter network built on top of a low-power 802.15.4 Thread network.',
         documentation: {
             label: 'Matter Door Lock',
             href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/matter/lock/README.html',
@@ -48,8 +47,7 @@ const programConfig = [
     {
         name: 'Matter Light Bulb',
         type: 'jlink',
-        description:
-            'WIP',
+        description: 'This light bulb sample demonstrates the usage of the Matter application layer to build a white dimmable light bulb device. You can use this sample as a reference for creating your application. This device works as a Matter accessory device, meaning it can be paired and controlled remotely over a Matter network built on top of a low-power 802.15.4 Thread network.',
         documentation: {
             label: 'Matter Light Bulb',
             href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/matter/light_bulb/README.html',
@@ -165,16 +163,12 @@ const learnConfig = [
 
 const developConfig = [
     {
-        ref: 'Hello World',
-        sampleSource: 'zephyr/samples/hello_world',
+        ref: 'Matter Door Lock',
+        sampleSource: 'nrf/samples/matter/lock',
     },
     {
-        ref: 'Peripheral LED Button Service',
-        sampleSource: 'nrf/samples/bluetooth/peripheral_lbs',
-    },
-    {
-        ref: 'Peripheral UART',
-        sampleSource: 'nrf/samples/bluetooth/peripheral_uart',
+        ref: 'Matter Light Bulb',
+        sampleSource: 'nrf/samples/matter/light_bulb',
     },
 ];
 
