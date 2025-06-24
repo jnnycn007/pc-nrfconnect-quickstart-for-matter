@@ -13,6 +13,7 @@ import Learn from '../../../common/steps/Learn';
 import Program from '../../../common/steps/program';
 import Rename from '../../../common/steps/Rename';
 import SelectEcosystem from '../../../common/steps/SelectEcosystem';
+import EcosystemRequirements from '../../../common/steps/EcosystemRequirements';
 import { Choice } from '../../device/deviceSlice';
 
 const infoConfig = {
@@ -82,20 +83,24 @@ const verifyConfig = [
 
 const ecosystemsConfig = [
     {
-        name: 'Apple',
+        name: 'Apple Home',
         description: 'Work with Apple Home',
+        link: 'https://www.apple.com/home-app/'
     },
     {
-        name: 'Google',
+        name: 'Google Home',
         description: 'Work with Google Home',
+        link: 'https://home.google.com/welcome/'
     },
     {
-        name: 'Amazon',
+        name: 'Amazon Alexa',
         description: 'Work with Amazon Alexa',
+        link: 'https://www.amazon.com/Alexa-App/b?ie=UTF8&node=18354642011'
     },
     {
         name: 'SmartThings',
         description: 'Work with SmartThings',
+        link: 'https://www.samsung.com/uk/smartthings/app/'
     },
 ];
 
@@ -224,6 +229,7 @@ export default {
         Program(programConfig),
         Verify(verifyConfig),
         SelectEcosystem(ecosystemsConfig),
+        EcosystemRequirements(),
         Evaluate(evaluateConfig),
         Learn(learnConfig),
         Develop(developConfig),

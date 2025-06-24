@@ -23,17 +23,30 @@ import {
 interface EcosystemProps {
     name: string;
     description: string;
+    link: string;
 }
 
 interface SelectEcosystemStepProps {
     ecosystems: EcosystemProps[];
 }
 
+let selectedEcosystem: EcosystemProps | undefined = undefined;
+
+export const setSelectedEcosystem = (ecosystem: EcosystemProps | undefined) => {
+    selectedEcosystem = ecosystem;
+};
+
+export const getSelectedEcosystem = () => selectedEcosystem;
+
 const SelectEcosystemStep = ({ ecosystems }: SelectEcosystemStepProps) => {
 
     const dispatch = useAppDispatch();
     const previouslySelectedChoice = undefined;
-    const [selected, setSelected] = React.useState<Choice | undefined>(previouslySelectedChoice);
+    const [selected, setSelected] = React.useState<EcosystemProps | undefined>(previouslySelectedChoice);
+
+    const getSelectedEcosystem = () => {
+        return selected;
+    };
 
     const isSelected = (name: string) => {
         const result = selected?.name === name;
@@ -58,7 +71,7 @@ const SelectEcosystemStep = ({ ecosystems }: SelectEcosystemStepProps) => {
                     onSelect={item => {
                         const found = ecosystems.find(ecosystem => ecosystem.name === item.id);
                         if (found) {
-                            setSelected(found as Choice);
+                            setSelected(found);
                         }
                     }}
                 />
@@ -70,7 +83,8 @@ const SelectEcosystemStep = ({ ecosystems }: SelectEcosystemStepProps) => {
                     onClick={next => {
                         if (!selected) return;
 
-                        dispatch(setChoice(selected));
+                        //dispatch(setChoice(selected));
+                        setSelectedEcosystem(selected);
                         next();
                     }}
                 />
