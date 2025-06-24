@@ -15,6 +15,7 @@ import Rename from '../../../common/steps/Rename';
 import SelectEcosystem from '../../../common/steps/SelectEcosystem';
 import EcosystemRequirements from '../../../common/steps/EcosystemRequirements';
 import Pairing from '../../../common/steps/Pairing';
+import Interaction from '../../../common/steps/Interaction';
 import { Choice } from '../../device/deviceSlice';
 import path from 'path';
 
@@ -120,71 +121,17 @@ const pairingConfig = [
     },
 ];
 
-const evaluateConfig = [
+const interactConfig = [
     {
-        ref: 'Hello World',
-        resources: [
-            {
-                title: 'Test the sample',
-                description:
-                    'Open the nRF Connect Serial Terminal application and press reset on the device to print the output.',
-                app: 'pc-nrfconnect-serial-terminal',
-                vComIndex: 0,
-            },
-            {
-                title: 'Documentation',
-                description: 'Read the complete documentation for the sample.',
-                mainLink: {
-                    label: 'Open documentation',
-                    href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/zephyr/samples/hello_world/README.html',
-                },
-            },
-        ],
+        name: "Matter Door Lock",
+        instruction: "Click the Matter Door Lock icon to change the device state and watch the LED2 on the board that corresponds to the lock state."
+        
     },
     {
-        ref: 'Peripheral LED Button Service',
-        resources: [
-            {
-                title: 'Test the sample',
-                description: 'Follow the testing steps to evaluate the sample.',
-                mainLink: {
-                    label: 'Testing steps',
-                    href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/bluetooth/peripheral_lbs/README.html#testing',
-                },
-            },
-            {
-                title: 'Documentation',
-                description: 'Read the complete documentation for the sample.',
-                mainLink: {
-                    label: 'Open documentation',
-                    href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/bluetooth/peripheral_lbs/README.html',
-                },
-            },
-        ],
-    },
-    {
-        ref: 'Peripheral UART',
-        resources: [
-            {
-                title: 'Test the sample',
-                description:
-                    'Follow the testing steps instructions to evaluate the sample.',
-                mainLink: {
-                    label: 'Testing steps',
-                    href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/bluetooth/peripheral_uart/README.html#testing',
-                },
-            },
-            {
-                title: 'Documentation',
-                description: 'Read the complete documentation for the sample.',
-                mainLink: {
-                    label: 'Open documentation',
-                    href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/bluetooth/peripheral_uart/README.html',
-                },
-            },
-        ],
-    },
-];
+        name: "Matter Light Bulb",
+        instruction: "Click the Matter Light Bulb icon to change the device state and watch the LED2 on the board that corresponds to the light bulb state."
+    }
+];  
 
 const learnConfig = [
     {
@@ -247,7 +194,7 @@ export default {
         SelectEcosystem(ecosystemsConfig),
         EcosystemRequirements(),
         Pairing(),
-        Evaluate(evaluateConfig),
+        Interaction(interactConfig),
         Learn(learnConfig),
         Develop(developConfig),
         Apps(appsConfig),
