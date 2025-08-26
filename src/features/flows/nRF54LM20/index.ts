@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Nordic Semiconductor ASA
+ * Copyright (c) 2025 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -26,10 +26,11 @@ import {
 } from '../commonResources';
 import { AdvertisingData } from '../pairingConfig';
 
+// TODO: Add a link to the hardware documentation
 const infoConfig = {
     title: 'Next-level multiprotocol SoC',
     markdownContent:
-        '![nRF54L15 DK](54L15DK.png)  \n&nbsp;  \nnRF54L15 is the first System-on-Chip (SoC) in the nRF54L Series. It is an ultra-low power Bluetooth 6.0 SoC with a new best-in-class multiprotocol radio and advanced security features.  \n&nbsp; \n&nbsp; \n&nbsp; ![54L15 DK Technologies](54LSeriesDKTech.png) \n&nbsp;  \nThe nRF54L Series takes the popular nRF52 Series to the next level with excellent processing power and efficiency, expanded memory, and new peripherals, all in a more compact package. \n&nbsp;  \n[Hardware documentation](https://docs.nordicsemi.com/bundle/ps_nrf54L15/page/keyfeatures_html5.html)',
+        '![nRF54LM20 DK](54LM20DK.png)  \n&nbsp;  \nnRF54LM20 is a SoC (System-on-Chip) in the nRF54L Series. It is an ultra-low power Bluetooth 6.0 SoC with a new best-in-class multiprotocol radio and advanced security features.  \n&nbsp; \n&nbsp; \n&nbsp; ![54L20 DK Technologies](54LSeriesDKTech.png) \n&nbsp;  \nThe nRF54L Series takes the popular nRF52 Series to the next level with excellent processing power and efficiency, expanded memory, and new peripherals, all in a more compact package. \n&nbsp;  \n[Hardware documentation]()',
 };
 
 const programConfig = [
@@ -45,7 +46,7 @@ const programConfig = [
         firmware: [
             {
                 core: 'Application',
-                file: 'nrf54l15dk_lock.hex',
+                file: 'nrf54lm20dk_lock.hex',
                 link: {
                     label: 'Matter Door Lock',
                     href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/matter/lock/README.html',
@@ -65,7 +66,7 @@ const programConfig = [
         firmware: [
             {
                 core: 'Application',
-                file: 'nrf54l15dk_light_bulb.hex',
+                file: 'nrf54lm20dk_light_bulb.hex',
                 link: {
                     label: 'Matter Light Bulb',
                     href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/matter/light_bulb/README.html',
@@ -97,14 +98,14 @@ const interactConfig = [
         name: 'Matter Door Lock',
         instruction:
             'Follow the instructions below to control the Matter Door Lock state:',
-        dkImage: '../resources/devices/images/54L15DK_controlling.png',
+        dkImage: '../resources/devices/images/54LM20DK_controlling.png',
         dkExtraData: 'LED 1',
     },
     {
         name: 'Matter Light Bulb',
         instruction:
             'Follow the instructions below to control the Matter Light Bulb state:',
-        dkImage: '../resources/devices/images/54L15DK_controlling.png',
+        dkImage: '../resources/devices/images/54LM20DK_controlling.png',
         dkExtraData: 'LED 1',
     },
 ];
@@ -123,12 +124,12 @@ const learnConfig = [
 ];
 
 const advertisingData = {
-    enablePairingImage: '../resources/devices/images/54L15DK_pairing.png',
+    enablePairingImage: '../resources/devices/images/54LM20DK_pairing.png',
     button: 'Button 0',
 } as AdvertisingData;
 
 export default {
-    device: 'nRF54L15 DK',
+    device: 'nRF54LM20 DK',
     flow: [
         Info(infoConfig),
         Rename(),

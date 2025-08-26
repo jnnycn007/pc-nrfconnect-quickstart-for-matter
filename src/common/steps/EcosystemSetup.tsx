@@ -6,10 +6,7 @@
 
 import React from 'react';
 
-import {
-    ecosystemConfig,
-    getSelectedEcosystem,
-} from '../../features/flows/ecosystemConfig';
+import { getSelectedEcosystem } from '../../features/flows/ecosystemConfig';
 import { videoNote } from '../../features/flows/videoNote';
 import { Back } from '../Back';
 import Main from '../Main';
