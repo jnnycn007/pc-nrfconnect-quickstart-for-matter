@@ -87,14 +87,16 @@ const InteractionStep = ({ interactions }: InteractionStepProps) => {
                                 </div>
                             ))}
                         </div>
-                        <img
-                            src={interaction?.dkImage}
-                            alt="DK visualization"
-                            style={{
-                                maxWidth: '650px',
-                                marginTop: '20px',
-                            }}
-                        />
+                        {interaction?.dkImage && (
+                            <img
+                                src={interaction?.dkImage}
+                                alt="DK visualization"
+                                style={{
+                                    maxWidth: '650px',
+                                    marginTop: '20px',
+                                }}
+                            />
+                        )}
                     </div>
                     <div
                         className="video-container"

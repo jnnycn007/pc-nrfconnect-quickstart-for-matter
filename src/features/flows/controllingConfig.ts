@@ -224,6 +224,57 @@ export const controllingConfig: ControllingConfig[] = [
             },
         ],
     },
+    {
+        name: 'Matter Temperature Sensor',
+        controllingGuide: [
+            {
+                name: 'Apple Home',
+                guide: [
+                    'Open the <b>Apple Home</b> app',
+                    'Tap on the <b>Climate</b> tile on the top bar',
+                    'Tap on the <b>Temperature</b> tile',
+                    'You are going to see two <b>Temperature Sensor</b> tiles. The one is the in-built sensor of Apple Home hub, and the other is the sensor of Temperature Sensor device.',
+                    'Find the <b>Temperature</b> tile with the name you assigned during commissioning and read its measurement.',
+                    'The temperature reading will gradually increase from -20°C to 20°C in 1°C increments per each 10 seconds, repeating in a continuous loop.',
+                ],
+                video: '../resources/ecosystems/Apple/usage/apple_temperature_sensor_usage.mp4',
+                videoDeviceName: 'Temperature',
+            },
+            {
+                name: 'SmartThings',
+                guide: [
+                    'Open the <b>SmartThings</b> app',
+                    'Go to the <b>Devices</b> page',
+                    'Tap on the <b>Temperature sensor</b> device tile to open detailed view',
+                    'Observe the simulated temperature in Celsius degrees. The temperature reading will gradually increase from -20°C to 20°C in 1°C increments per each 10 seconds, repeating in a continuous loop.',
+                ],
+                video: '../resources/ecosystems/SmartThings/usage/smartthings_temp_usage.mp4',
+                videoDeviceName: 'Temperature sensor',
+            },
+            {
+                name: 'Amazon Alexa',
+                guide: [
+                    'Open the <b>Amazon Alexa</b> app',
+                    'Go to the <b>Devices</b> page',
+                    'Tap on the <b>Temperature sensor</b> tile to open detailed view',
+                    'Observe the simulated temperature in Celsius degrees. The temperature reading will gradually increase from -20°C to 20°C in 1°C increments per each 10 seconds, repeating in a continuous loop.',
+                ],
+                video: '../resources/ecosystems/Amazon/usage/alexa_temp_usage.mp4',
+                videoDeviceName: 'Temperature sensor',
+            },
+            {
+                name: 'Google Home',
+                guide: [
+                    'Open the <b>Google Home</b> app',
+                    'Go to the <b>Devices</b> page',
+                    'Tap on the <b>Temperature sensor</b> tile to open detailed view',
+                    'Observe the simulated temperature in Celsius degrees. The temperature reading will gradually increase from -20°C to 20°C in 1°C increments per each 10 seconds, repeating in a continuous loop.',
+                ],
+                video: '../resources/ecosystems/Google/usage/google_temp_usage.mp4',
+                videoDeviceName: 'Temperature Sensor',
+            },
+        ],
+    },
 ];
 
 export const getSelectedControllingGuide = (

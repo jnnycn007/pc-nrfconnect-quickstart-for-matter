@@ -47,6 +47,9 @@ const appleHomeGuideEndBase = [
 const smartThingsGuideStartBase = [
     'Open the <b>SmartThings</b> app',
     'Tap <b>+</b>',
+    'Tap <b>Add device</b>',
+    'Tap <b>Add</b> in the <b>Partner devices</b> section',
+    'Tap <b>Matter</b>',
     'Tap <b>Scan QR code</b>',
     'Scan the QR code',
     'Wait for the device to be added',
@@ -96,18 +99,6 @@ const googleHomeGuideStartBase = [
 
 const googleHomeGuideEndBase = [
     'The device will be visible in your selected room',
-    'Tap on the <b>not-specified(2)</b> device tile to open detailed view',
-    'Tap on the <b>Gear</b> icon to access settings',
-    'Tap on the <b>Name</b> field and change it to <b>Humidity Sensor</b>',
-    'Navigate back to the <b>Devices</b> page',
-    'Tap on the <b>not-specified</b> device tile to open detailed view',
-    'Tap on the <b>Gear</b> icon to access settings',
-    'Tap on the <b>Name</b> field and change it to <b>Pressure Sensor</b>',
-    'Navigate back to the <b>Devices</b> page',
-    'Tap on the <b>Test Thingy:53</b> device tile to open detailed view',
-    'Tap on the <b>Gear</b> icon to access settings',
-    'Tap on the <b>Name</b> field and change it to <b>Temperature Sensor</b>',
-    'Navigate back to the <b>Devices</b> page',
 ];
 
 export const pairingConfig: PairingConfig[] = [
@@ -230,8 +221,59 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Google Home',
-                guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
+                guide: [
+                    ...googleHomeGuideStartBase,
+                    ...googleHomeGuideEndBase,
+                    'Tap on the <b>not-specified(2)</b> device tile to open detailed view',
+                    'Tap on the <b>Gear</b> icon to access settings',
+                    'Tap on the <b>Name</b> field and change it to <b>Humidity Sensor</b>',
+                    'Navigate back to the <b>Devices</b> page',
+                    'Tap on the <b>not-specified</b> device tile to open detailed view',
+                    'Tap on the <b>Gear</b> icon to access settings',
+                    'Tap on the <b>Name</b> field and change it to <b>Pressure Sensor</b>',
+                    'Navigate back to the <b>Devices</b> page',
+                    'Tap on the <b>Test Thingy:53</b> device tile to open detailed view',
+                    'Tap on the <b>Gear</b> icon to access settings',
+                    'Tap on the <b>Name</b> field and change it to <b>Temperature Sensor</b>',
+                    'Navigate back to the <b>Devices</b> page',
+                ],
                 video: '../resources/ecosystems/Google/adding_device/google_ws.mp4',
+            },
+        ],
+    },
+    {
+        name: 'Matter Temperature Sensor',
+        factoryData: path.resolve(
+            __dirname,
+            '../resources/devices/factory_data/temperature_sensor.hex'
+        ),
+        autoAdvertise: true,
+        pairingGuide: [
+            {
+                name: 'Apple Home',
+                guide: [...appleHomeGuideStartBase, ...appleHomeGuideEndBase],
+                video: '../resources/ecosystems/Apple/adding_device/apple_pairing_temperature.mp4',
+            },
+            {
+                name: 'SmartThings',
+                guide: [
+                    ...smartThingsGuideStartBase,
+                    ...smartThingsGuideEndBase,
+                ],
+                video: '../resources/ecosystems/SmartThings/adding_device/smartthings_temperature.mp4',
+            },
+            {
+                name: 'Amazon Alexa',
+                guide: [
+                    ...amazonAlexaGuideStartBase,
+                    ...amazonAlexaGuideEndBase,
+                ],
+                video: '../resources/ecosystems/Amazon/adding_device/alexa_temperature.mp4',
+            },
+            {
+                name: 'Google Home',
+                guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
+                video: '../resources/ecosystems/Google/adding_device/google_temperature.mp4',
             },
         ],
     },

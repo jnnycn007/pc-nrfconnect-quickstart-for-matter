@@ -147,6 +147,10 @@ export const developCommonConfig = [
         ref: 'Matter Weather Station',
         sampleSource: 'nrf/applications/weather_station',
     },
+    {
+        ref: 'Matter Temperature Sensor',
+        sampleSource: 'nrf/samples/matter/temperature_sensor',
+    },
 ];
 
 export const appsCommonConfig = [
