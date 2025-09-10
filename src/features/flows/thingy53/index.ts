@@ -102,6 +102,10 @@ const advertisingData = {
 export default {
     // TODO: For now QS for Matter does not support changing USB name at runtime. Thingy has to use the bootloader name before and after the DFU.
     device: 'Bootloader Thingy:53',
+    programConfig,
+    interactConfig,
+    learnConfig,
+    advertisingData,
     flow: [
         Info(infoConfig),
         Rename(),

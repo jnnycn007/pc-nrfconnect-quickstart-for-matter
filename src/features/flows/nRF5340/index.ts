@@ -173,6 +173,10 @@ const advertisingData = {
 
 export default {
     device: 'nRF5340 DK',
+    programConfig,
+    interactConfig,
+    learnConfig,
+    advertisingData,
     flow: [
         Info(infoConfig),
         Rename(),

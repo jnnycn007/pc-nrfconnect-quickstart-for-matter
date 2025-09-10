@@ -4,5 +4,13 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-module.exports =
+const baseConfig =
     require('@nordicsemiconductor/pc-nrfconnect-shared/config/jest.config')();
+
+module.exports = {
+    ...baseConfig,
+    setupFilesAfterEnv: [
+        ...(baseConfig.setupFilesAfterEnv || []),
+        '<rootDir>/jest.setup.js',
+    ],
+};
