@@ -7,6 +7,8 @@
 import React, { useState } from 'react';
 import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import { useAppSelector } from '../../app/store';
+import { getChoice } from '../../features/device/deviceSlice';
 import {
     EcosystemConfig,
     ecosystemConfig,
@@ -21,6 +23,14 @@ const SelectEcosystemStep = () => {
     const [selected, setSelected] = useState<EcosystemConfig | undefined>(
         undefined
     );
+    const currentChoice = useAppSelector(getChoice);
+
+    // Filter ecosystems to only show those that support the current device type
+    const filteredEcosystems = ecosystemConfig.filter(
+        ecosystem =>
+            currentChoice?.name &&
+            ecosystem.supportedDeviceTypes.includes(currentChoice.name)
+    );
 
     const isSelected = (name: string) => {
         const result = selected?.name === name;
@@ -34,7 +44,7 @@ const SelectEcosystemStep = () => {
         <Main>
             <Main.Content heading="Select an ecosystem you want to work with">
                 <RadioSelect
-                    items={ecosystemConfig.map(ecosystem => ({
+                    items={filteredEcosystems.map(ecosystem => ({
                         id: ecosystem.name,
                         selected: isSelected(ecosystem.name),
                         onClick: () => {},
@@ -45,7 +55,7 @@ const SelectEcosystemStep = () => {
                         ),
                     }))}
                     onSelect={item => {
-                        const found = ecosystemConfig.find(
+                        const found = filteredEcosystems.find(
                             ecosystem => ecosystem.name === item.id
                         );
                         if (found) {

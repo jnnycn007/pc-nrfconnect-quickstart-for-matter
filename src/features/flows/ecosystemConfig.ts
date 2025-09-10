@@ -16,6 +16,7 @@ export interface EcosystemConfig {
     appSystemSupport: string;
     setupVideo: string;
     setupManual: string[];
+    supportedDeviceTypes: string[];
     ecosystemVersion: string;
 }
 
@@ -44,6 +45,12 @@ export const ecosystemConfig: EcosystemConfig[] = [
             'Select <b>Room</b> that you want to add the device to',
             'Agree to the usage terms and conditions',
             'The device will be added to the Apple Home app and it should be visible in the selected room',
+        ],
+        supportedDeviceTypes: [
+            'Matter Door Lock',
+            'Matter Light Bulb',
+            'Matter Temperature Sensor',
+            'Matter Weather Station',
         ],
         ecosystemVersion: '18.6',
     },
@@ -75,6 +82,12 @@ export const ecosystemConfig: EcosystemConfig[] = [
             'Choose the Wi-Fi network that you want to use for the device. It should be the same as the one that you are currently using on your smartphone',
             'Click <b>Next</b> button on next few screens that instruct you how to use the device',
             'The device will be added to the Google Home app and it should be visible in the selected room',
+        ],
+        supportedDeviceTypes: [
+            'Matter Door Lock',
+            'Matter Light Bulb',
+            'Matter Temperature Sensor',
+            'Matter Weather Station',
         ],
         ecosystemVersion: '3.38.53.1',
     },
@@ -112,6 +125,12 @@ export const ecosystemConfig: EcosystemConfig[] = [
             "Tap <b>Let's go</b>",
             'The device will be added to the Alexa app and it should be visible in the selected room',
         ],
+        supportedDeviceTypes: [
+            'Matter Door Lock',
+            'Matter Light Bulb',
+            'Matter Temperature Sensor',
+            'Matter Weather Station',
+        ],
         ecosystemVersion: '2025.16',
     },
     {
@@ -142,6 +161,12 @@ export const ecosystemConfig: EcosystemConfig[] = [
             'Select the location, room and the name for the device, and tap <b>Done</b>',
             'You will be navigated to the device detailed view. Tap <b><</b> to go back to the room view',
             'The device will be added to the SmartThings app and it should be visible in the selected room',
+        ],
+        supportedDeviceTypes: [
+            'Matter Door Lock',
+            'Matter Light Bulb',
+            'Matter Temperature Sensor',
+            'Matter Weather Station',
         ],
         ecosystemVersion: '1.8.34.21',
     },
