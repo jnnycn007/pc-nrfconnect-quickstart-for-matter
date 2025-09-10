@@ -20,7 +20,6 @@ interface InteractionProps {
     name: string;
     instruction: string;
     dkImage?: string;
-    dkExtraData?: string;
 }
 
 interface InteractionStepProps {

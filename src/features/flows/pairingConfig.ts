@@ -92,6 +92,7 @@ const googleHomeGuideStartBase = [
     "Read <b> Google's Privacy Policy</b> and tap <b>Agree</b> to continue",
     "Tap <b>I'm ready</b> to start pairing process",
     'Wait for the device to be added',
+    'If the prompt about the device not being certified appears, tap <b>Set up anyway</b>',
     'Once device is connected, tap <b>Done</b>',
     'Select a location for the device, set the name and tap <b>Next</b>',
     'Create a unique name for the device and tap <b>Next</b>',
@@ -274,6 +275,46 @@ export const pairingConfig: PairingConfig[] = [
                 name: 'Google Home',
                 guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
                 video: '../resources/ecosystems/Google/adding_device/google_temperature.mp4',
+            },
+        ],
+    },
+    {
+        name: 'Matter Contact Sensor',
+        factoryData: path.resolve(
+            __dirname,
+            '../resources/devices/factory_data/contact_sensor.hex'
+        ),
+        autoAdvertise: true,
+        pairingGuide: [
+            {
+                name: 'Apple Home',
+                guide: [
+                    ...appleHomeGuideStartBase,
+                    'Select how the contact sensor will appear in the <b>Apple Home</b> app and tap <b>Continue</b>',
+                    ...appleHomeGuideEndBase,
+                ],
+                video: '../resources/ecosystems/Apple/adding_device/apple_pairing_contact.mp4',
+            },
+            {
+                name: 'SmartThings',
+                guide: [
+                    ...smartThingsGuideStartBase,
+                    ...smartThingsGuideEndBase,
+                ],
+                video: '../resources/ecosystems/SmartThings/adding_device/smartthings_contact.mp4',
+            },
+            {
+                name: 'Amazon Alexa',
+                guide: [
+                    ...amazonAlexaGuideStartBase,
+                    ...amazonAlexaGuideEndBase,
+                ],
+                video: '../resources/ecosystems/Amazon/adding_device/alexa_contact.mp4',
+            },
+            {
+                name: 'Google Home',
+                guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
+                video: '../resources/ecosystems/Google/adding_device/google_contact.mp4',
             },
         ],
     },

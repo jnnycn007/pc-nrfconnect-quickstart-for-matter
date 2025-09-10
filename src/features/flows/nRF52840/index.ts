@@ -93,6 +93,26 @@ const programConfig = [
             },
         ],
     },
+    {
+        name: 'Matter Contact Sensor',
+        type: 'jlink',
+        description:
+            'This contact sensor sample demonstrates the usage of the Matter application layer to build a contact sensor device. You can use this sample as a reference for creating your application. This device works as a Matter accessory device, meaning it can be paired and controlled remotely over a Matter network built on top of a low-power 802.15.4 Thread network.',
+        documentation: {
+            label: 'Matter Contact Sensor',
+            href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/matter/contact_sensor/README.html',
+        },
+        firmware: [
+            {
+                core: 'Application',
+                file: 'nrf52840/nrf52840dk_contact_sensor.hex',
+                link: {
+                    label: 'Matter Contact Sensor',
+                    href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/samples/matter/contact_sensor/README.html',
+                },
+            },
+        ],
+    },
 ] as Choice[];
 
 const verifyConfig = [
@@ -117,6 +137,13 @@ const verifyConfig = [
             regex: /(Using nRF Connect SDK[\s\S]*Init CHIP stack[\s\S]*Device Configuration:[\s\S]*Setup Discriminator \(0xFFFF for UNKNOWN\/ERROR\): 3840 \(0xF00\))/,
         },
     },
+    {
+        ref: 'Matter Contact Sensor',
+        config: {
+            vComIndex: 0,
+            regex: /(Using nRF Connect SDK[\s\S]*Init CHIP stack[\s\S]*Device Configuration:[\s\S]*Setup Discriminator \(0xFFFF for UNKNOWN\/ERROR\): 3840 \(0xF00\))/,
+        },
+    },
 ];
 
 const interactConfig = [
@@ -125,19 +152,24 @@ const interactConfig = [
         instruction:
             'Follow the instructions below to control the Matter Door Lock state:',
         dkImage: '../resources/devices/images/52840DK_controlling.png',
-        dkExtraData: 'LED 2',
     },
     {
         name: 'Matter Light Bulb',
         instruction:
             'Follow the instructions below to control the Matter Light Bulb state:',
         dkImage: '../resources/devices/images/52840DK_controlling.png',
-        dkExtraData: 'LED 2',
     },
     {
         name: 'Matter Temperature Sensor',
         instruction:
             'Follow the instructions below to control the Matter Temperature Sensor state:',
+    },
+    {
+        name: 'Matter Contact Sensor',
+        instruction:
+            'Follow the instructions below to control the Matter Contact Sensor state:',
+        dkImage:
+            '../resources/devices/images/52840DK_controlling_led_button.png',
     },
 ];
 
