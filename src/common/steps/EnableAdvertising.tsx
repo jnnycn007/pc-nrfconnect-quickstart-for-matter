@@ -56,7 +56,7 @@ const EnableAdvertisingStep = (advertisingData: AdvertisingData) => {
                                         advertising (see the image below).
                                         <br />
                                         <br />
-                                        <div className="advertising-content">
+                                        <div className="additional-dk-image-content">
                                             <img
                                                 src={enablePairingImage}
                                                 alt={`Pairing with ${choice.name}`}

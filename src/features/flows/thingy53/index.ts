@@ -16,6 +16,8 @@ import Pairing from '../../../common/steps/Pairing';
 import Program from '../../../common/steps/program';
 import Rename from '../../../common/steps/Rename';
 import SelectEcosystem from '../../../common/steps/SelectEcosystem';
+import VerifyBootloader from '../../../common/steps/Thingy53Bootloader';
+import VerifyPartitions from '../../../common/steps/Thingy53Partitions';
 import Verify from '../../../common/steps/Thingy53Verify';
 import { Choice } from '../../device/deviceSlice';
 import {
@@ -100,8 +102,7 @@ const advertisingData = {
 } as AdvertisingData;
 
 export default {
-    // TODO: For now QS for Matter does not support changing USB name at runtime. Thingy has to use the bootloader name before and after the DFU.
-    device: 'Bootloader Thingy:53',
+    device: 'Nordic Thingy:53',
     programConfig,
     interactConfig,
     learnConfig,
@@ -109,6 +110,8 @@ export default {
     flow: [
         Info(infoConfig),
         Rename(),
+        VerifyPartitions(),
+        VerifyBootloader(),
         Program(programConfig),
         Verify(verifyConfig),
         SelectEcosystem(),
