@@ -25,5 +25,14 @@ jobs:
       - name: Install dependencies
         run: npm ci        
        
+      - name: Verify selectFirmwareWithoutProgrammingOption is false
+        run: |
+          if grep -q "selectFirmwareWithoutProgrammingOption = true" src/app/devOptions.ts; then
+            echo "ERROR: selectFirmwareWithoutProgrammingOption must be set to false"
+            exit 1
+          else
+            echo "✓ selectFirmwareWithoutProgrammingOption is correctly set to false"
+          fi
+        
       - name: Check
         run: npm run check
