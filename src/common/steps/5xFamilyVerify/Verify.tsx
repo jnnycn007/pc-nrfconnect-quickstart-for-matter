@@ -48,11 +48,11 @@ export default ({ vComIndex, regex }: { vComIndex: number; regex: RegExp }) => {
                                         'Timed out or did not receive expected value'
                                     )
                                 );
-                            }, 3000)
+                            }, 5000)
                         );
                     })
                     .catch(e => dispatch(setError(describeError(e))));
-            }, 3000);
+            }, 5000);
         }
     }, [dispatch, response, error, device, vComIndex, regex]);
 
