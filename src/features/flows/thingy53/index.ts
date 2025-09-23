@@ -47,7 +47,7 @@ const programConfig = [
         firmware: [
             {
                 core: 'Application',
-                file: 'thingy53/matter_weather_station.signed.bin',
+                file: 'thingy53/thingy53_matter_weather_station.zip',
                 link: {
                     label: 'Matter Weather Station',
                     href: 'https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/applications/matter_weather_station/README.html',

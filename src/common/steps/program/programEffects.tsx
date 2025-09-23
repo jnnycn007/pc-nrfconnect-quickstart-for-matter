@@ -169,7 +169,10 @@ const buttonlessDfuProgram =
             batch.program(
                 path.join(getFirmwareFolder(), file),
                 core === 'Modem' ? 'Application' : core,
-                undefined,
+                {
+                    // Thingy 53 requires a longer netCoreUploadDelay
+                    netCoreUploadDelay: 120,
+                },
                 undefined,
                 {
                     onProgress: ({
