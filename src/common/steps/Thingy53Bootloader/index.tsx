@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
+import { InfoBox } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import { useAppDispatch, useAppSelector } from '../../../app/store';
 import { getSelectedDeviceUnsafely } from '../../../features/device/deviceSlice';
@@ -14,7 +15,7 @@ import {
 } from '../../../features/flow/flowSlice';
 import { Back } from '../../Back';
 import Main from '../../Main';
-import { Next } from '../../Next';
+import { Skip } from '../../Next';
 
 let previous = false;
 
@@ -48,6 +49,7 @@ const VerifyBootloaderStep = () => {
                 heading="Entering bootloader mode"
                 subHeading="Make sure that the device is in bootloader mode, which is required to program it using Device Firmware Upgrade."
             >
+                <br />
                 <div>
                     <div className="guide">
                         {guideManual.map((guide, index) => (
@@ -70,20 +72,33 @@ const VerifyBootloaderStep = () => {
                         ))}
                     </div>
                     <br />
-
                     <div className="additional-dk-image-content">
                         <img
                             src="../resources/devices/images/thingy53_bootloader_mode.png"
                             alt="Enabling bootloader mode"
                         />
                     </div>
+                    <br />
+                    Once the device is in bootloader mode, the app will
+                    automatically proceed to the next step.
+                    <br />
+                    <br />
+                    <InfoBox
+                        mdiIcon="mdi-information-outline"
+                        color="tw-text-primary"
+                        title="You can skip this step if you have already flashed the device with the correct firmware."
+                        content="In this case, the device will be revert to the factory reset state and then proceed the verification step."
+                    />
                 </div>
             </Main.Content>
             <Main.Footer>
                 <Back />
-                <Next
+                <Skip
                     onClick={next => {
-                        next();
+                        // Skip both bootloader verification and programming steps
+                        // Go directly to verification since device already has valid firmware
+                        next(); // Skip VerifyBootloader -> go to Program
+                        next(); // Skip Program -> go to Verify
                     }}
                 />
             </Main.Footer>

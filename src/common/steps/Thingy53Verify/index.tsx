@@ -57,7 +57,7 @@ const VerifyStep = ({
 
     const getHeading = () => {
         if (failed) {
-            return 'Verification failed';
+            return 'Verification failed. In some cases, the Thingy53 device may need to be powered off and on again.';
         }
         if (gotAllResponses) {
             return 'Verification successful';
