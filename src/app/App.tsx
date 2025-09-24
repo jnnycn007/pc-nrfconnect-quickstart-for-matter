@@ -12,6 +12,7 @@ import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfu
 import { startWatchingDevices } from '../features/device/deviceLib';
 import { addDevice, removeDevice } from '../features/device/deviceSlice';
 import Flow from '../features/flow';
+import { startWatchingFormattedThingyDevices } from '../features/flow/connect/DetectThingy';
 import Header from './Header';
 import { useAppDispatch } from './store';
 
@@ -23,15 +24,45 @@ const useDevicesInStore = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        // Watch regular devices
         const stopWatchingDevicesPromise = startWatchingDevices(
             device => dispatch(addDevice(device)),
             deviceId => dispatch(removeDevice(deviceId))
         );
-        logger.debug('Started watching devices');
+
+        // Watch Thingy devices with proper formatting for deviceInfo
+        const currentThingyDevices = new Map();
+        const stopWatchingThingyPromise = startWatchingFormattedThingyDevices(
+            formattedThingyDevices => {
+                // Handle removed devices
+                currentThingyDevices.forEach((device, deviceId) => {
+                    if (!formattedThingyDevices.find(d => d.id === deviceId)) {
+                        dispatch(removeDevice(deviceId));
+                    }
+                });
+
+                // Handle added/updated devices
+                formattedThingyDevices.forEach(formattedDevice => {
+                    if (!currentThingyDevices.has(formattedDevice.id)) {
+                        dispatch(addDevice(formattedDevice));
+                    }
+                    currentThingyDevices.set(
+                        formattedDevice.id,
+                        formattedDevice
+                    );
+                });
+            },
+            error => {
+                logger.error('Thingy device watching error:', error);
+            }
+        );
 
         return () => {
             stopWatchingDevicesPromise.then(stopWatchingDevices =>
                 stopWatchingDevices()
+            );
+            stopWatchingThingyPromise.then(stopWatchingThingy =>
+                stopWatchingThingy()
             );
         };
     }, [dispatch]);
