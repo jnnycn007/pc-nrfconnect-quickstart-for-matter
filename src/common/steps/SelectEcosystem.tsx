@@ -81,6 +81,6 @@ const SelectEcosystemStep = () => {
 };
 
 export default () => ({
-    name: 'Select Ecosystem',
+    name: 'Select',
     component: () => SelectEcosystemStep(),
 });

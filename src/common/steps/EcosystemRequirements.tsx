@@ -141,6 +141,6 @@ const EcosystemRequirementsStep = () => {
 };
 
 export default () => ({
-    name: 'Ecosystem Requirements',
+    name: 'Requirements',
     component: EcosystemRequirementsStep,
 });

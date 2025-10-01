@@ -82,6 +82,6 @@ const EnableAdvertisingStep = (advertisingData: AdvertisingData) => {
 };
 
 export default (advertisingData: AdvertisingData) => ({
-    name: 'Enable Advertising',
+    name: 'Advertising',
     component: () => EnableAdvertisingStep(advertisingData),
 });

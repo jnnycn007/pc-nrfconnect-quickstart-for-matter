@@ -103,6 +103,6 @@ const EcosystemSetupStep = () => {
 };
 
 export default () => ({
-    name: 'Ecosystem Setup',
+    name: 'Setup',
     component: EcosystemSetupStep,
 });
