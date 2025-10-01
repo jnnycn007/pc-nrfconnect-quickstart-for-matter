@@ -27,6 +27,13 @@
  * ```
  */
 
+import * as cbor from 'cbor';
+import { promises as fs } from 'fs';
+// Import the server version of qrcode which includes toBuffer for Node.js
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - qrcode types don't include the /lib/server subpath
+import * as QRCode from 'qrcode/lib/server';
+
 import { Base38 } from './Base38';
 
 /**
@@ -409,9 +416,6 @@ export class SetupPayload {
         discovery: number = DiscoveryCapability.BLE,
         flow: CommissioningFlow = CommissioningFlow.Standard
     ): Promise<SetupPayload> {
-        // eslint-disable-next-line global-require
-        const fs = require('fs').promises;
-
         try {
             // Read and parse the JSON file
             const fileContent = await fs.readFile(jsonFilePath, 'utf8');
@@ -501,9 +505,6 @@ export class SetupPayload {
         discovery: number = DiscoveryCapability.BLE,
         flow: CommissioningFlow = CommissioningFlow.Standard
     ): Promise<SetupPayload> {
-        // eslint-disable-next-line global-require
-        const fs = require('fs').promises;
-
         try {
             // Read the hex file
             const hexContent = await fs.readFile(hexFilePath, 'utf8');
@@ -654,11 +655,7 @@ export class SetupPayload {
     private static decodeCBOR(binaryData: Uint8Array): Record<string, unknown> {
         // Try to use the 'cbor' package if available, otherwise fall back to basic
         // parsing
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let cbor: any;
         try {
-            // eslint-disable-next-line global-require
-            cbor = require('cbor');
             const result = cbor.decode(binaryData);
             return result;
         } catch (error) {
@@ -918,20 +915,6 @@ export class SetupPayload {
      * @returns {Promise<string>} Promise that resolves to the image path
      */
     async GenerateQRCodeImage(imagePath: string): Promise<string> {
-        // eslint-disable-next-line global-require
-        const fs = require('fs').promises;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let QRCode: any;
-        try {
-            // eslint-disable-next-line global-require
-            QRCode = require('qrcode');
-        } catch (error) {
-            throw new Error(
-                'QR code generation requires the "qrcode" package to be installed. ' +
-                    'Run: npm install qrcode @types/qrcode'
-            );
-        }
-
         const qrOptions = {
             width: 300,
             margin: 2,
@@ -944,7 +927,7 @@ export class SetupPayload {
 
         const qrCode = this.generateQRCode();
         const qrCodeBuffer = await QRCode.toBuffer(qrCode, qrOptions);
-        await fs.writeFile(imagePath, qrCodeBuffer);
+        await fs.writeFile(imagePath, qrCodeBuffer as Uint8Array);
 
         return imagePath;
     }
