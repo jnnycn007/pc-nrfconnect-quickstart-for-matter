@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
+import { getCurrentWindow } from '@electron/remote';
 import { logger, telemetry } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { setNrfutilLogger } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil';
 import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
@@ -73,6 +74,12 @@ export const App = () => {
         logger.initialise();
         setNrfutilLogger(logger);
         NrfutilDeviceLib.setLogLevel('error');
+
+        // Set window as non-resizable with fixed size
+        // TODO: Remove this workaround once Launcher supports fixed size windows
+        const window = getCurrentWindow();
+        window.setResizable(false);
+        window.setContentSize(1200, 768);
     }, []);
     useDevicesInStore();
 

@@ -26,7 +26,11 @@
                 "2.14.0"
             ]
         },
-        "nrfutilCore": "8.1.1"
+        "nrfutilCore": "8.1.1",
+        "fixedSize": {
+            "width": 1200,
+            "height": 768
+        }
     },
     "files": [
         "dist/",
