@@ -146,35 +146,6 @@ const verifyConfig = [
     },
 ];
 
-const interactConfig = [
-    {
-        name: 'Matter Door Lock',
-        instruction:
-            'Follow the instructions below to control the Matter Door Lock state:',
-        dkImage:
-            '../resources/devices/images/54L15DK_controlling_led_button.png',
-    },
-    {
-        name: 'Matter Light Bulb',
-        instruction:
-            'Follow the instructions below to control the Matter Light Bulb state:',
-        dkImage:
-            '../resources/devices/images/54L15DK_controlling_led_button.png',
-    },
-    {
-        name: 'Matter Temperature Sensor',
-        instruction:
-            'Follow the instructions below to control the Matter Temperature Sensor state:',
-    },
-    {
-        name: 'Matter Contact Sensor',
-        instruction:
-            'Follow the instructions below to control the Matter Contact Sensor state:',
-        dkImage:
-            '../resources/devices/images/54L15DK_controlling_led_button.png',
-    },
-];
-
 const learnConfig = [
     ...commonLearningResources,
     {
@@ -196,7 +167,6 @@ const advertisingData = {
 export default {
     device: 'nRF54L15 DK',
     programConfig,
-    interactConfig,
     learnConfig,
     advertisingData,
     flow: [
@@ -209,7 +179,7 @@ export default {
         EcosystemSetup(),
         EnableAdvertising(advertisingData),
         Pairing(),
-        Interaction(interactConfig),
+        Interaction({ led: 1, button: 0 }),
         Learn(learnConfig),
         Develop(developCommonConfig, matterDevResources),
         Apps(appsCommonConfig),

@@ -14,6 +14,7 @@ interface PairingEcosystem {
     name: string;
     guide: string[];
     video: string;
+    qrcodeStep: number;
 }
 
 export interface PairingConfig {
@@ -113,6 +114,7 @@ export const pairingConfig: PairingConfig[] = [
         pairingGuide: [
             {
                 name: 'Apple Home',
+                qrcodeStep: 4,
                 guide: [
                     ...appleHomeGuideStartBase,
                     'Tap <b>Continue</b>',
@@ -124,6 +126,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'SmartThings',
+                qrcodeStep: 6,
                 guide: [
                     ...smartThingsGuideStartBase,
                     ...smartThingsGuideEndBase,
@@ -132,6 +135,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Amazon Alexa',
+                qrcodeStep: 6,
                 guide: [
                     ...amazonAlexaGuideStartBase,
                     ...amazonAlexaGuideEndBase,
@@ -140,6 +144,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Google Home',
+                qrcodeStep: 5,
                 guide: [
                     ...googleHomeGuideStartBase,
                     'Set a new passcode and tap <b>Continue</b>, or skip this step by tapping <b>Skip</b>',
@@ -160,11 +165,13 @@ export const pairingConfig: PairingConfig[] = [
         pairingGuide: [
             {
                 name: 'Apple Home',
+                qrcodeStep: 4,
                 guide: [...appleHomeGuideStartBase, ...appleHomeGuideEndBase],
                 video: '../resources/ecosystems/Apple/adding_device/apple_pairing_bulb.mp4',
             },
             {
                 name: 'SmartThings',
+                qrcodeStep: 6,
                 guide: [
                     ...smartThingsGuideStartBase,
                     ...smartThingsGuideEndBase,
@@ -173,6 +180,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Amazon Alexa',
+                qrcodeStep: 6,
                 guide: [
                     ...amazonAlexaGuideStartBase,
                     ...amazonAlexaGuideEndBase,
@@ -181,6 +189,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Google Home',
+                qrcodeStep: 5,
                 guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
                 video: '../resources/ecosystems/Google/adding_device/google_bulb.mp4',
             },
@@ -196,6 +205,7 @@ export const pairingConfig: PairingConfig[] = [
         pairingGuide: [
             {
                 name: 'Apple Home',
+                qrcodeStep: 4,
                 guide: [
                     ...appleHomeGuideStartBase,
                     'Customize name or remove sensors as needed',
@@ -205,6 +215,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'SmartThings',
+                qrcodeStep: 6,
                 guide: [
                     ...smartThingsGuideStartBase,
                     ...smartThingsGuideEndBase,
@@ -213,6 +224,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Amazon Alexa',
+                qrcodeStep: 6,
                 guide: [
                     ...amazonAlexaGuideStartBase,
                     'This device includes three sensors. Select a sensor tile, then follow the next two steps for each sensor individually.',
@@ -222,6 +234,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Google Home',
+                qrcodeStep: 5,
                 guide: [
                     ...googleHomeGuideStartBase,
                     ...googleHomeGuideEndBase,
@@ -252,11 +265,13 @@ export const pairingConfig: PairingConfig[] = [
         pairingGuide: [
             {
                 name: 'Apple Home',
+                qrcodeStep: 4,
                 guide: [...appleHomeGuideStartBase, ...appleHomeGuideEndBase],
                 video: '../resources/ecosystems/Apple/adding_device/apple_pairing_temperature.mp4',
             },
             {
                 name: 'SmartThings',
+                qrcodeStep: 6,
                 guide: [
                     ...smartThingsGuideStartBase,
                     ...smartThingsGuideEndBase,
@@ -265,6 +280,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Amazon Alexa',
+                qrcodeStep: 6,
                 guide: [
                     ...amazonAlexaGuideStartBase,
                     ...amazonAlexaGuideEndBase,
@@ -273,6 +289,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Google Home',
+                qrcodeStep: 5,
                 guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
                 video: '../resources/ecosystems/Google/adding_device/google_temperature.mp4',
             },
@@ -288,6 +305,7 @@ export const pairingConfig: PairingConfig[] = [
         pairingGuide: [
             {
                 name: 'Apple Home',
+                qrcodeStep: 4,
                 guide: [
                     ...appleHomeGuideStartBase,
                     'Select how the contact sensor will appear in the <b>Apple Home</b> app and tap <b>Continue</b>',
@@ -297,6 +315,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'SmartThings',
+                qrcodeStep: 6,
                 guide: [
                     ...smartThingsGuideStartBase,
                     ...smartThingsGuideEndBase,
@@ -305,6 +324,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Amazon Alexa',
+                qrcodeStep: 6,
                 guide: [
                     ...amazonAlexaGuideStartBase,
                     ...amazonAlexaGuideEndBase,
@@ -313,6 +333,7 @@ export const pairingConfig: PairingConfig[] = [
             },
             {
                 name: 'Google Home',
+                qrcodeStep: 5,
                 guide: [...googleHomeGuideStartBase, ...googleHomeGuideEndBase],
                 video: '../resources/ecosystems/Google/adding_device/google_contact.mp4',
             },

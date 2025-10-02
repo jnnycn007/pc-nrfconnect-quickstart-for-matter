@@ -49,7 +49,7 @@ const SelectEcosystemStep = () => {
                         selected: isSelected(ecosystem.name),
                         onClick: () => {},
                         content: (
-                            <span className="tw-text-lg tw-font-semibold">
+                            <span className="tw-text-lg tw-font-medium">
                                 {ecosystem.description}
                             </span>
                         ),
@@ -81,6 +81,6 @@ const SelectEcosystemStep = () => {
 };
 
 export default () => ({
-    name: 'Select',
+    name: 'Ecosystem',
     component: () => SelectEcosystemStep(),
 });

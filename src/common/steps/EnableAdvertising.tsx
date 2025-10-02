@@ -17,8 +17,6 @@ import { Back } from '../Back';
 import Main from '../Main';
 import { Next } from '../Next';
 
-import '../../app/App.scss';
-
 let previous = false;
 
 const EnableAdvertisingStep = (advertisingData: AdvertisingData) => {
@@ -40,29 +38,28 @@ const EnableAdvertisingStep = (advertisingData: AdvertisingData) => {
         <Main>
             {pairingConfig?.autoAdvertise ? null : (
                 <>
-                    <Main.Content heading="Enable Bluetooth Low Energy advertising">
+                    <Main.Content
+                        heading="Enable Bluetooth Low Energy advertising"
+                        subHeading="Follow the instructions below to enable Bluetooth Low Energy advertising:"
+                    >
                         <div>
                             {(() => {
                                 const { button, enablePairingImage } =
                                     advertisingData;
                                 return (
-                                    <>
-                                        This example does not enable Bluetooth
-                                        Low Energy advertising automatically.
-                                        <br />
-                                        <br />
-                                        Press <b>{button}</b> on the development
-                                        kit to enable Bluetooth Low Energy
-                                        advertising (see the image below).
-                                        <br />
-                                        <br />
-                                        <div className="additional-dk-image-content">
-                                            <img
-                                                src={enablePairingImage}
-                                                alt={`Pairing with ${choice.name}`}
-                                            />
+                                    <div className="tw-flex tw-flex-col tw-gap-8">
+                                        <div className="tw-font-light">
+                                            Press <b>{button}</b> on the
+                                            development kit to enable Bluetooth
+                                            Low Energy advertising (see the
+                                            image below).
                                         </div>
-                                    </>
+                                        <img
+                                            src={enablePairingImage}
+                                            alt={`Pairing with ${choice.name}`}
+                                            className="tw-h-auto tw-max-w-[600px]"
+                                        />
+                                    </div>
                                 );
                             })()}
                         </div>

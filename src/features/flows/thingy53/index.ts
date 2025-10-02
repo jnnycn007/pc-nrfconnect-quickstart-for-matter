@@ -75,14 +75,6 @@ const verifyConfig = {
     ],
 };
 
-const interactConfig = [
-    {
-        name: 'Matter Weather Station',
-        instruction:
-            'Follow the instructions below to observe the measurement results of Matter Weather Station device:',
-    },
-];
-
 const learnConfig = [
     ...commonLearningResources,
     {
@@ -104,7 +96,6 @@ const advertisingData = {
 export default {
     device: 'Nordic Thingy:53',
     programConfig,
-    interactConfig,
     learnConfig,
     advertisingData,
     flow: [
@@ -119,7 +110,7 @@ export default {
         EcosystemSetup(),
         EnableAdvertising(advertisingData),
         Pairing(),
-        Interaction(interactConfig),
+        Interaction({}),
         Learn(learnConfig),
         Develop(developCommonConfig, matterDevResources),
         Apps(appsCommonConfig),

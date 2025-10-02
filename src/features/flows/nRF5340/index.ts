@@ -158,33 +158,6 @@ const verifyConfig = [
     },
 ];
 
-const interactConfig = [
-    {
-        name: 'Matter Door Lock',
-        instruction:
-            'Follow the instructions below to control the Matter Door Lock state:',
-        dkImage: '../resources/devices/images/5340DK_controlling.png',
-    },
-    {
-        name: 'Matter Light Bulb',
-        instruction:
-            'Follow the instructions below to control the Matter Light Bulb state:',
-        dkImage: '../resources/devices/images/5340DK_controlling.png',
-    },
-    {
-        name: 'Matter Temperature Sensor',
-        instruction:
-            'Follow the instructions below to observe the measurement results of Matter Temperature Sensor device:',
-    },
-    {
-        name: 'Matter Contact Sensor',
-        instruction:
-            'Follow the instructions below to control the Matter Contact Sensor state:',
-        dkImage:
-            '../resources/devices/images/5340DK_controlling_led_button.png',
-    },
-];
-
 const learnConfig = [
     ...commonLearningResources,
     {
@@ -206,7 +179,6 @@ const advertisingData = {
 export default {
     device: 'nRF5340 DK',
     programConfig,
-    interactConfig,
     learnConfig,
     advertisingData,
     flow: [
@@ -219,7 +191,7 @@ export default {
         EcosystemSetup(),
         EnableAdvertising(advertisingData),
         Pairing(),
-        Interaction(interactConfig),
+        Interaction({ led: 2, button: 1 }),
         Learn(learnConfig),
         Develop(developCommonConfig, matterDevResources),
         Apps(appsCommonConfig),

@@ -20,6 +20,26 @@ export interface ControllingConfig {
     controllingGuide: ControllingEcosystem[];
 }
 
+export interface HardwareParams {
+    led?: number;
+    button?: number;
+}
+
+const replaceTemplateVars = (text: string, params: HardwareParams): string => {
+    let result = text;
+    if (params.led !== undefined) {
+        result = result.replace(/\{LED\}/g, `LED ${params.led}`);
+    } else {
+        result = result.replace(/\{LED\}/g, 'LED');
+    }
+    if (params.button !== undefined) {
+        result = result.replace(/\{BUTTON\}/g, `Button ${params.button}`);
+    } else {
+        result = result.replace(/\{BUTTON\}/g, 'button');
+    }
+    return result;
+};
+
 export const controllingConfig: ControllingConfig[] = [
     {
         name: 'Matter Door Lock',
@@ -31,14 +51,14 @@ export const controllingConfig: ControllingConfig[] = [
                     'Navigate to the room that contains the device that was previously paired',
                     'Tap the <b>Matter Accessory</b> Door Lock tile to open detailed view',
                     'Tap on the top part of the slider to unlock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Tap on the bottom part of the slider to lock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                     'Click to the side to go back to the room view',
                     'Click on the lock symbol on the <b>Matter Accessory</b> tile to unlock the Matter Door Lock from the room view',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Click on the lock symbol on the <b>Matter Accessory</b> tile again to lock the Matter Door Lock from the room view',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                 ],
                 video: '../resources/ecosystems/Apple/usage/apple_lock_usage.mp4',
                 videoDeviceName: 'Matter Accessory',
@@ -49,9 +69,9 @@ export const controllingConfig: ControllingConfig[] = [
                     'Open the <b>SmartThings</b> app',
                     'Go to the <b>Devices</b> page',
                     'Tap on the <b>MatterLock</b> tile to unlock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Tap on the <b>MatterLock</b> tile again to lock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                 ],
                 video: '../resources/ecosystems/SmartThings/usage/smartthings_lock_usage_short.mp4',
                 videoDeviceName: 'MatterLock',
@@ -66,9 +86,9 @@ export const controllingConfig: ControllingConfig[] = [
                     'Tap on the <b>Enable</b> slider to allow unlock in the Alexa App',
                     'Go back to the <b>First lock</b> device detailed view',
                     'Tap on the lock symbol to unlock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Tap on the lock symbol again to lock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                 ],
                 video: '../resources/ecosystems/Amazon/usage/alexa_lock_usage.mp4',
                 videoDeviceName: 'First lock',
@@ -80,9 +100,9 @@ export const controllingConfig: ControllingConfig[] = [
                     'Go to the <b>Devices</b> page',
                     'Tap the <b>Living Room device</b> Door Lock tile to open detailed view',
                     'Tap on the lock symbol to unlock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Tap on the lock symbol again to lock the Matter Door Lock',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                 ],
                 video: '../resources/ecosystems/Google/usage/google_lock_usage.mp4',
                 videoDeviceName: 'Living Room device',
@@ -98,12 +118,12 @@ export const controllingConfig: ControllingConfig[] = [
                     'Open the <b>Apple Home</b> app',
                     'Navigate to the room that contains the device that was previously paired',
                     'Click on the light bulb symbol on the <b>Matter Accessory</b> tile to turn on the Matter Light Bulb from the room view',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Click on the light bulb symbol on the <b>Matter Accessory</b> tile again to turn off the Matter Light Bulb from the room view',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                     'Tap the <b>Matter Accessory</b> Light Bulb tile to open detailed view',
                     'Tap on the slider to change the brightness of the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>changed brightness level</b> accordingly',
+                    'Observe that <b>{LED}</b> <b>changed brightness level</b> accordingly',
                 ],
                 video: '../resources/ecosystems/Apple/usage/apple_bulb_usage.mp4',
                 videoDeviceName: 'Matter Accessory',
@@ -114,12 +134,12 @@ export const controllingConfig: ControllingConfig[] = [
                     'Open the <b>SmartThings</b> app',
                     'Go to the <b>Devices</b> page',
                     'Tap the power symbol on the <b>MatterLight 1</b> Light Bulb tile to to turn on the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                     'Tap on the <b>MatterLight 1</b> Light Bulb tile to open detailed view',
                     'Click on the power symbol again to turn off the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Move the slider to change the brightness of the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>changed brightness level</b> accordingly',
+                    'Observe that <b>{LED}</b> <b>changed brightness level</b> accordingly',
                 ],
                 video: '../resources/ecosystems/SmartThings/usage/smartthings_bulb_usage.mp4',
                 videoDeviceName: 'MatterLight 1',
@@ -131,11 +151,11 @@ export const controllingConfig: ControllingConfig[] = [
                     'Go to the <b>Devices</b> page',
                     'Tap the <b>First light</b> Light Bulb tile to open detailed view',
                     'Click on the power symbol to turn on the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                     'Click on the power symbol again to turn off the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Clink on the power symbol again and move the slider to change the brightness of the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>changed brightness level</b> accordingly',
+                    'Observe that <b>{LED}</b> <b>changed brightness level</b> accordingly',
                 ],
                 video: '../resources/ecosystems/Amazon/usage/alexa_bulb_usage.mp4',
                 videoDeviceName: 'First light',
@@ -146,12 +166,12 @@ export const controllingConfig: ControllingConfig[] = [
                     'Open the <b>Google Home</b> app',
                     'Go to the <b>Devices</b> page',
                     'Click on the light bulb symbol on the <b>Living Room device</b> tile to turn on the Matter Light Bulb from the room view',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Click on the light bulb symbol on the <b>Living Room device</b> tile again to turn off the Matter Light Bulb from the room view',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b>',
+                    'Observe that <b>{LED}</b> turns on',
                     'Press the <b>Living Room device</b> Light Bulb tile to open detailed view',
                     'Move the slider to change the brightness of the Matter Light Bulb',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>changed brightness level</b> accordingly',
+                    'Observe that <b>{LED}</b> <b>changed brightness level</b> accordingly',
                 ],
                 video: '../resources/ecosystems/Google/usage/google_bulb_usage.mp4',
                 videoDeviceName: 'Living Room device',
@@ -281,14 +301,14 @@ export const controllingConfig: ControllingConfig[] = [
             {
                 name: 'Apple Home',
                 guide: [
-                    'Press the button marked with green rectangle on the DK',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b> while pressing the button',
+                    'Press the <b>{BUTTON}</b>',
+                    'Observe that <b>{LED}</b> turns on while pressing the button',
                     'Release the button',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b>',
+                    'Observe that <b>{LED}</b> turns off',
                     'Open the <b>Apple Home</b> app',
                     'Navigate to the room that contains the device that was previously paired',
                     'Tap the <b>Activity History</b> tile to open a list of events',
-                    'Press the button marked with green rectangle on the DK once again',
+                    'Press the <b>{BUTTON}</b> once again',
                     'Wait for the update in the <b>Apple Home</b> app and observe that the event is added to the <b>Activity History</b> list as <bClosed/b>',
                     'Release the button',
                     'Wait for the update in the <b>Apple Home</b> app and observe that the event is removed from the <b>Activity History</b> list as <bOpened/b>',
@@ -302,10 +322,10 @@ export const controllingConfig: ControllingConfig[] = [
                     'Open the <b>SmartThings</b> app',
                     'Go to the <b>Devices</b> page',
                     'Tap on the <b>Open close sensor</b> tile to open detailed view',
-                    'Press the button marked with green rectangle on the DK',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b> and the Contact sensor tile in the <b>SmartThings</b> app is marked as <b>Closed</b>',
+                    'Press the <b>{BUTTON}</b>',
+                    'Observe that <b>{LED}</b> turns on and the Contact sensor tile in the <b>SmartThings</b> app is marked as <b>Closed</b>',
                     'Release the button',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b> and the Contact sensor tile in the <b>SmartThings</b> app is marked as <b>Open</b>',
+                    'Observe that <b>{LED}</b> turns off and the Contact sensor tile in the <b>SmartThings</b> app is marked as <b>Open</b>',
                 ],
                 video: '../resources/ecosystems/SmartThings/usage/smartthings_contact_usage.mp4',
                 videoDeviceName: 'Open close sensor',
@@ -316,10 +336,10 @@ export const controllingConfig: ControllingConfig[] = [
                     'Open the <b>Amazon Alexa</b> app',
                     'Go to the <b>Devices</b> page',
                     'Tap on the <b>Contact sensor</b> tile to open detailed view',
-                    'Press the button marked with green rectangle on the DK',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b> and the Contact sensor tile in the <b>Amazon Alexa</b> app is marked as <b>Closed</b>',
+                    'Press the <b>{BUTTON}</b>',
+                    'Observe that <b>{LED}</b> turns on and the Contact sensor tile in the <b>Amazon Alexa</b> app is marked as <b>Closed</b>',
                     'Release the button',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b> and the Contact sensor tile in the <b>Amazon Alexa</b> app is marked as <b>Open</b>',
+                    'Observe that <b>{LED}</b> turns off and the Contact sensor tile in the <b>Amazon Alexa</b> app is marked as <b>Open</b>',
                 ],
                 video: '../resources/ecosystems/Amazon/usage/alexa_contact_usage.mp4',
                 videoDeviceName: 'Contact sensor',
@@ -329,15 +349,15 @@ export const controllingConfig: ControllingConfig[] = [
                 guide: [
                     'Open the <b>Google Home</b> app',
                     'Go to the <b>Devices</b> page',
-                    'Press the button marked with green rectangle on the DK',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b> and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Closed</b>',
+                    'Press the <b>{BUTTON}</b>',
+                    'Observe that <b>{LED}</b> turns on and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Closed</b>',
                     'Release the button',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b> and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Open</b>',
+                    'Observe that <b>{LED}</b> turns off and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Open</b>',
                     'Tap on the <b>Contact sensor</b> tile to open detailed view',
-                    'Press the button marked with green rectangle on the DK',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns on</b> and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Closed</b>',
+                    'Press the <b>{BUTTON}</b>',
+                    'Observe that <b>{LED}</b> turns on and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Closed</b>',
                     'Release the button',
-                    'Observe that <b>LED</b> marked with green rectangle on the DK <b>turns off</b> and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Open</b>',
+                    'Observe that <b>{LED}</b> turns off and the Contact sensor tile in the <b>Google Home</b> app is marked as <b>Open</b>',
                 ],
                 video: '../resources/ecosystems/Google/usage/google_contact_usage.mp4',
                 videoDeviceName: 'Contact Sensor',
@@ -348,14 +368,24 @@ export const controllingConfig: ControllingConfig[] = [
 
 export const getSelectedControllingGuide = (
     sampleName: string,
-    ecosystemName: string
+    ecosystemName: string,
+    hardwareParams?: HardwareParams
 ): ControllingEcosystem | undefined => {
     const config = controllingConfig.find(cfg => cfg.name === sampleName);
     if (config) {
         const guide = config.controllingGuide.find(
             guideEntry => guideEntry.name === ecosystemName
         );
-        if (guide) return guide;
+        if (guide && hardwareParams) {
+            // Return a copy with template variables replaced
+            return {
+                ...guide,
+                guide: guide.guide.map(step =>
+                    replaceTemplateVars(step, hardwareParams)
+                ),
+            };
+        }
+        return guide;
     }
     return undefined;
 };
